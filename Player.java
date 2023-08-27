@@ -40,14 +40,15 @@ public class Player {
         this.cards = cards;
     }
 
-    public void editCountChips(int numberChip, int count, char value) { // Editing count chips for players (unmonitored).
+    // Editing count chip for players (unmonitored):
+    public void editCountChips(Player player, int numberChip, int count, char value) {
         numberChip--; // Get chip index.
         int pastCount = chipBalance[numberChip].getCount();
         if (value == '+') chipBalance[numberChip].setCount(pastCount + count);
         else if (value == '-') {
             chipBalance[numberChip].setCount(pastCount - count);
             int counter = 0;
-            for (Chip chip : chipBalance) if (chip.getCount() <= 0) counter++;
+            for (Chip chip : chipBalance) if (player.chipBalance[numberChip].getCount() < 0) counter++;
             if (counter >= 4) {
                 Local.notify(5);
                 System.exit(0);
