@@ -1,4 +1,8 @@
+import java.util.Scanner;
+
 public class Local { // Colors, notifications, decorations, other methods.
+
+    static Scanner scanner = new Scanner(System.in);
 
     // Colors block:
     public static final String RESET = "\u001B[0m", BLACK = "\u001B[30m", RED = "\u001B[31m";
@@ -15,20 +19,50 @@ public class Local { // Colors, notifications, decorations, other methods.
         // Notifications:
         else if (status == 4) System.out.printf("%s[i] The action has been successfully completed.%s\n", BLUE, RESET);
         else if (status == 5) System.out.printf("%s[i] You're out of chips.%s\n", BLUE, RESET);
+        else if (status == 6) System.out.printf("%s[i] Exit the game...%s\n", BLUE, RESET);
         // Incorrect status:
         else System.out.println("[!] Non-existent status error code.");
     }
 
-    public static void mainLogo() {
+    public static int tryBlock(String text, int from, int to) {
+        streaksDecor();
+        while (true) {
+            try {
+                System.out.printf("• %s: ", text);
+                int chooseOption = scanner.nextInt();
+                if (chooseOption < from || chooseOption > to) Local.notify(1);
+                else return chooseOption;
+            } catch (java.util.InputMismatchException e) {
+                Local.notify(1);
+                scanner.nextLine();
+            }
+        }
+    }
+
+    // Decorations block:
+    public static void streaksDecor() {
+        System.out.printf("-%s-%s-%s-%s-%s-%s-%s-%s-%s-%s-%s-%s-%s-%s-\n",
+                RED, RESET, RED, RESET, RED, RESET, RED, RESET, RED, RESET, RED, RESET, RED, RESET);
+    }
+
+    public static void mainMenuDecor() {
         System.out.printf("=%s=%s=%s=%s= %s•%s•%sLucky%sStreak%s•%s• %s=%s=%s=%s=%s=\n",
                 RED, RESET, RED, RESET, RED, RESET, RED, RESET, RESET, RED, RESET, RED, RESET, RED, RESET);
     }
 
-    public static int tryBlock(String text, int from, int to) {
-        while (true) {
-            try {
+    public static void selectGameDecor() {
+        System.out.printf("=%s=%s=%s=%s= %s•%sSelect%sGame%s• =%s=%s=%s=%s=\n",
+                RED, RESET, RED, RESET, RED, RESET, RED, RESET, RED, RESET, RED, RESET);
+    }
 
-            }
-        }
+    public static void slotMachineDecor() {
+        System.out.printf("=%s=%s=%s=%s= %s•%sSlot%sMachine%s• =%s=%s=%s=%s=\n",
+                RED, RESET, RED, RESET, RED, RESET, RED, RESET, RED, RESET, RED, RESET);
+    }
+
+    public static void slotsDecor() {
+        System.out.printf("=%s=%s=%s=%s=%s=%s=%s=%s=%s=%s=%s=%s=%s=%s=%s=%s=%s=%s=%s=%s=\n",
+                BLUE, RESET, GREEN, RESET, RED, RESET, CYAN, RESET, PURPLE, RESET, YELLOW, RESET,
+                BLUE, RESET, GREEN, RESET, RED, RESET, CYAN, RESET);
     }
 }
