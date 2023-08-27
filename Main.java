@@ -9,12 +9,8 @@ public class Main {
             players[i] = new Player(playerName, chips);
         }
 
-
-
-        // Output players:
-        for (Player player : players) {
-            System.out.println(player.getName() + ": " + player.getChipBalance().replace(",", " |"));
-        }
+        players[0].editCountChips(players[0], 1, 10, '+');
+        new MenuStructure().mainManu();
     }
 
     public static Chip[] createInitialChips() { // Start set of chips for players:
