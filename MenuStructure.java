@@ -1,8 +1,6 @@
-import java.util.Scanner;
-
 public class MenuStructure {
-    Scanner scanner = new Scanner(System.in);
-    public void mainManu() {
+
+    public void mainManu() { // Main method for starting program.
         Local.mainMenuDecor();
         System.out.println("1. Start\n2. Options\n3. Exit");
         switch (Local.tryBlock("Choose an action", 1, 3)) {
@@ -20,7 +18,7 @@ public class MenuStructure {
         System.out.println("1. Slot machine \uD83C\uDFB0\n2. Roulette\n3. Black Jack\n4. Poker\n5. Back");
         switch (Local.tryBlock("Choose an action", 1, 5)) {
             case 1 -> new SlotMachine().initGame();
-            case 2 -> System.out.println("Roulette");
+            case 2 -> new Roulette().initRouletteSlots();
             case 3 -> System.out.println("Black Jack");
             case 4 -> System.out.println("Poker");
             case 5 -> mainManu();
