@@ -3,13 +3,7 @@ import java.util.Arrays;
 public class Player {
     private String name;
     private Chip[] chipBalance;
-    private Card[] cards; // Set of card for card games.
-
-    public Player(String name, Chip[] chipBalance, Card[] cards) {
-        this.name = name;
-        this.chipBalance = chipBalance;
-        this.cards = cards;
-    }
+    private Card[] setCards; // Set of card for card games.
 
     public Player(String name, Chip[] chipBalance) {
         this.name = name;
@@ -32,12 +26,12 @@ public class Player {
         this.chipBalance = chipBalance;
     }
 
-    public Card[] getCards() {
-        return cards;
+    public Card[] getSetCards() {
+        return setCards;
     }
 
-    public void setCards(Card[] cards) {
-        this.cards = cards;
+    public void setSetCards(Card[] setCards) {
+        this.setCards = setCards;
     }
 
     // Editing count chip for players (unmonitored):
@@ -48,7 +42,7 @@ public class Player {
         else if (value == '-') {
             chipBalance[numberChip].setCount(pastCount - count);
             int counter = 0;
-            for (Chip chip : chipBalance) if (player.chipBalance[numberChip].getCount() < 0) counter++;
+            for (Chip ignored : chipBalance) if (player.chipBalance[numberChip].getCount() < 0) counter++;
             if (counter >= 4) {
                 Local.notify(5);
                 System.exit(0);
