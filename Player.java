@@ -41,6 +41,7 @@ public class Player {
         if (value == '+') chipBalance[numberChip].setCount(pastCount + count);
         else if (value == '-') {
             chipBalance[numberChip].setCount(pastCount - count);
+            // Checking to see if a player has chips:
             int counter = 0;
             for (Chip ignored : chipBalance) if (player.chipBalance[numberChip].getCount() < 0) counter++;
             if (counter >= 4) {
