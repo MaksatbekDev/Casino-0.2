@@ -31,10 +31,11 @@ public class Card {
         int index = 0;
         for (String suit : suits) {
             for (String rank : ranks) {
+                // // Determining the color of the card:
                 if (index % 2 == 0) deck[index] = new Card(
                         Local.RED + rank + Local.RESET,
                         Local.RED + suit + Local.RESET);
-                else deck[index] = new Card(rank, suit);
+                else deck[index] = new Card(rank, suit); // If the index of the map is odd, initialize it without color.
                 index++;
             }
         }
