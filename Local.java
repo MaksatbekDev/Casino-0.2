@@ -39,6 +39,15 @@ public class Local { // Colors, notifications, decorations, other methods.
         }
     }
 
+    public static void trySleep(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            Local.notify(3);
+            e.printStackTrace();
+        }
+    }
+
     // Decorations block:
     public static void streaksDecor() {
         System.out.printf("-%s-%s-%s-%s-%s-%s-%s-%s-%s-%s-%s-%s-%s-%s-\n",
