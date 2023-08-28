@@ -9,9 +9,6 @@ public class Chip {
         this.count = count;
     }
 
-    public Chip() {
-    }
-
     public String getLabel() {
         return label;
     }
