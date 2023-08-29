@@ -2,7 +2,7 @@ public class Chip {
     private String label;
     private int count;
     private int nominal;
-//Приколюха
+//Приколюха 2.0
     public Chip(String label, int nominal, int count) {
         this.label = label;
         this.nominal = nominal;
